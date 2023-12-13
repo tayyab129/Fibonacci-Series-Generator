@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Fibonacci Series Generator</h1>
+
+        <label for="termsInput">Enter the number for Fibonacci series:</label>
+        <input type="number" id="termsInput" min="1" max="20">
+        <button onclick="generateFibonacci()">Generate Fibonacci Series</button>
+
+        <p id="result"></p>
+    </div>
+    <script>
+        function generateFibonacci() {
+            let termsInput = document.getElementById("termsInput");
+            let terms = parseInt(termsInput.value);
+
+            if (isNaN(terms) || terms <= 0 || terms > 40) {
+                alert("Please enter a positive integer under 40 number.");
+                return;
+            }
+
+            let first = 1, second = 2, next;
+            let result = "Fibonacci Series up to " + terms + " terms: ";
+
+            for (let i = 1; i <= terms; ++i) {
+                result += first + ", ";
+
+                next = first + second;
+                first = second;
+                second = next;
+            }
+
+            result += "<br>";
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</body>
+
+</html>
